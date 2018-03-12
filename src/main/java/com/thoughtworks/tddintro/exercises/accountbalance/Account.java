@@ -21,7 +21,9 @@ public class Account {
     }
 
     public double withdrawMoney(double i) {
-        balance -= i;
+        if (i <= balance) {
+            balance -= i;
+        }
         return balance;
     }
 }

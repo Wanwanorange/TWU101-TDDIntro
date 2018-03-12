@@ -7,7 +7,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class AccountTests {
-    private final Account account = new Account(100);
+    private final Account account = new Account(50);
     private double accountValue;
 
     @Before
@@ -31,6 +31,6 @@ public class AccountTests {
     @Test
 //    @Ignore  // Remove each @Ignore and implement test
     public void shouldNotDecreaseMyBalanceWhenIWithdrawMoneyAndDoNotHaveEnoughToCoverTheWithdrawal(){
-
+        assertThat(account.withdrawMoney(100), is((double)50));
     }
 }
