@@ -1,8 +1,8 @@
 package com.thoughtworks.tddintro.exercises.library;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,7 +14,6 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class LibraryTest {
@@ -32,7 +31,7 @@ public class LibraryTest {
     }
 
     @Test
-    @Ignore // Remove each @Ignore and implement test
+//    @Ignore // Remove each @Ignore and implement test
     public void shouldPrintBookTitleWhenThereIsOneBook() {
         String title = "Book Title";
         books.add(title);
@@ -40,19 +39,27 @@ public class LibraryTest {
         library.listBooks();
 
         // add a verify statement here that shows that the book title was printed by the printStream
+        Mockito.verify(printStream).println(title + "\n");
     }
 
     @Test
-    @Ignore // Remove each @Ignore and implement test
+//    @Ignore // Remove each @Ignore and implement test
     public void shouldPrintNothingWhenThereAreNoBooks() {
-
-        // implement me
+        library.listBooks();
+        Mockito.verify(printStream).println("");
     }
 
     @Test
-    @Ignore // Remove each @Ignore and implement test
+//    @Ignore // Remove each @Ignore and implement test
     public void shouldPrintBothBookTitlesWhenThereAreTwoBooks() throws IOException {
-        // implement me
+        String book1 = "Slaughterhouse Five";
+        String book2 = "The Bell Jar";
+        books.add(book1);
+        books.add(book2);
+
+        library.listBooks();
+
+        Mockito.verify(printStream).println(book1 + "\n" + book2 + "\n");
     }
 
     @Test
@@ -63,10 +70,10 @@ public class LibraryTest {
     }
 
     @Test
-    @Ignore // Remove each @Ignore and implement test
+//    @Ignore // Remove each @Ignore and implement test
     public void shouldDeleteBookFromCollectionWhenRemovedByUser() throws IOException {
         // Add when/thenReturn here
-
+        when(bufferedReader.readLine()).thenReturn("The Two Towers");
         books.add("The Two Towers");
         library.removeBook();
 
