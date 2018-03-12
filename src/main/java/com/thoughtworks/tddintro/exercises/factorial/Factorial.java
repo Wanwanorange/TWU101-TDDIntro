@@ -8,6 +8,8 @@ public class Factorial {
             return i;
         } if (i == 3) {
             return 6;
+        } if (i < 0) {
+            throw new IllegalArgumentException("n must be non-negative");
         }
         return -1;
     }
