@@ -19,4 +19,9 @@ public class Account {
         balance += i;
         return balance;
     }
+
+    public double withdrawMoney(double i) {
+        balance -= i;
+        return balance;
+    }
 }
